@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinStarWars.Views.PeoplePage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Padding="16">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Hair Color: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.HairColor}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Skin Color: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.SkinColor}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Hair Color: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.HairColor}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Eye Color: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.EyeColor}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Birth Year: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.BirthYear}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Mass: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.Mass}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Height: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.Height}" Font="Normal,20"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Gender: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.Gender}" Font="Normal,20"/>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Number Films: " Font="Bold,20"></Label>
+                <Label Text="{Binding People.Films.Count}" Font="Normal,20"/>
+            </StackLayout>
+            
+            <Button Text="Show Films"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

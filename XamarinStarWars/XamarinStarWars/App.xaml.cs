@@ -10,9 +10,9 @@ namespace XamarinStarWars
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new MainPage();
-		}
+            var rootPage = new MainPage();
+            MainPage = new NavigationPage(rootPage);
+        }
 
 		protected override void OnStart ()
 		{

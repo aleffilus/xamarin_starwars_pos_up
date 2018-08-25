@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using XamarinStarWars.Models;
 
 namespace XamarinStarWars.Services
 {
@@ -11,12 +13,17 @@ namespace XamarinStarWars.Services
     {
         readonly string _BASE_URL = "https://swapi.co/api";
 
-        public async Task<List<string>> GetAllPeopleAsync()
+        public async Task<ResultPeople> GetAllPeopleAsync(String url)
         {
             using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync($"{_BASE_URL}/people");
-                return JsonConvert.DeserializeObject<List<string>>(json);
+                String urlApi = url == null ? $"{_BASE_URL}/people" : url;
+                Debug.WriteLine("urlApi: " + urlApi);
+
+                var json = await client.GetStringAsync(urlApi);
+                ResultPeople result = JsonConvert.DeserializeObject<ResultPeople>(json);
+
+                return result;
             }
         }
     }

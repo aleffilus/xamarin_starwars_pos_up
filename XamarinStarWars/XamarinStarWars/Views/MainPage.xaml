@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinStarWars"
+             xmlns:behaviors="clr-namespace:XamarinStarWars.Behaviors;assembly=XamarinStarWars"
+             x:Class="XamarinStarWars.MainPage"
+             Title="{Binding Title}">
+    <StackLayout>
+        <FlexLayout Direction="Row">
+            <Entry FlexLayout.Grow="2" Placeholder="Seach by name" Text="{Binding Search}"></Entry>
+            <Button FlexLayout.Grow="1" Text="Search"
+                    IsEnabled="{Binding IsNotBusy}"
+                    VerticalOptions="CenterAndExpand"
+                    Command="{Binding SearchPeopleComand}"
+                    HorizontalOptions="Center" />
+        </FlexLayout>
+        <ListView ItemsSource="{Binding Peoples}"
+                      VerticalOptions="FillAndExpand" HasUnevenRows="true"
+                      behaviors:AttachedItemTappedBehavior.Command="{Binding ItemClickCommand}"
+                      RefreshCommand="{Binding RefreshCommand}" IsPullToRefreshEnabled="true"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout.Padding>
+                                <OnPlatform x:TypeArguments="Thickness"
+                                    iOS="10"
+                                    Android="10"
+                                    WinPhone="0, 0, 0, 10" />
+                            </StackLayout.Padding>
+                            <Label Text="{Binding Name}" LineBreakMode="NoWrap" FontSize="16"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Show More"
+                Command="{Binding ShowMoreComand}"
+                IsVisible="{Binding IsShowMore, Mode=OneWay}"
+                IsEnabled="{Binding IsNotBusy}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>
