@@ -50,8 +50,11 @@
                 <Label Text="Number Films: " Font="Bold,20"></Label>
                 <Label Text="{Binding People.Films.Count}" Font="Normal,20"/>
             </StackLayout>
-            
+
+            <Label Text="Loading..." IsVisible="{Binding IsBusy}"></Label>
             <Button Text="Show Films"
+                IsEnabled="{Binding IsNotBusy}"
+                Command="{Binding ShowFilmsComand}"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center" />
         </StackLayout>

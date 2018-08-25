@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinStarWars.Views.PeopleFilmPage"
+             Title="{Binding Title}">
+    <ListView ItemsSource="{Binding Films}"
+                      VerticalOptions="FillAndExpand" HasUnevenRows="true"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
+                                    iOS="10"
+                                    Android="10"
+                                    WinPhone="0, 0, 0, 10" />
+                        </StackLayout.Padding>
+                        <Label Text="Title: "></Label>
+                        <Label Text="{Binding Title}" LineBreakMode="NoWrap" FontSize="12"/>
+                        <Label Text="Director: "></Label>
+                        <Label Text="{Binding Director}" LineBreakMode="NoWrap" FontSize="12"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

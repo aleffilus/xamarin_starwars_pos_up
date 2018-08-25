@@ -26,5 +26,23 @@ namespace XamarinStarWars.Services
                 return result;
             }
         }
+
+        public async Task<List<Film>> GetFilmsByListUrl (List<String> urls)
+        {
+            using (var client = new HttpClient())
+            {
+                List<Film> films = new List<Film>();
+
+                foreach (var filmUrl in urls)
+                {
+                    var json = await client.GetStringAsync(filmUrl);
+                    films.Add(JsonConvert.DeserializeObject<Film>(json));
+                }
+
+
+
+                return films;
+            }
+        }
     }
 }

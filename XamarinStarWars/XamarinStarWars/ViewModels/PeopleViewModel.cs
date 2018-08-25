@@ -35,6 +35,11 @@ namespace XamarinStarWars.ViewModels
 
         async Task ShowFilmsExecuteAsync()
         {
+            IsBusy = true;
+            var peopleFilmPage = new PeopleFilmPage();
+            await peopleFilmPage.ViewModel.Initialize(People);
+            await Navigation.PushAsync(peopleFilmPage);
+            IsBusy = false;
         }
 
         public override async Task Initialize(object parameters)
